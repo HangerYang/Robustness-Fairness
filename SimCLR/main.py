@@ -22,6 +22,8 @@ from simclr.modules.sync_batchnorm import convert_model
 from model import load_optimizer, save_model
 from utils import yaml_config_hook
 
+from celeba_dataset import CelebADataset
+
 
 def train(args, train_loader, model, criterion, optimizer, writer):
     loss_epoch = 0
@@ -77,11 +79,7 @@ def main(gpu, args):
             transform=TransformsSimCLR(size=args.image_size),
         )
     elif args.dataset == "CelebA":
-        train_dataset = torchvision.datasets.CelebA(
-            args.dataset_dir,
-            download=True,
-            transform=TransformsSimCLR(size=args.image_size),
-        )
+        train_dataset = CelebADataset(root_dir=args.dataset_dir, transform=TransformsSimCLR(size=args.image_size))
     else:
         raise NotImplementedError
 

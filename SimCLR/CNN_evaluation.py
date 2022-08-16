@@ -88,15 +88,27 @@ if __name__ == "__main__":
         )
     elif args.dataset == "CIFAR10":
         train_dataset = torchvision.datasets.CIFAR10(
-        root="./datasets",
+        args.dataset_dir,
         train=True,
-        download=False,
+        download=True,
         transform=transforms.ToTensor()
         )
         test_dataset = torchvision.datasets.CIFAR10(
             args.dataset_dir,
             train=False,
-            download=False,
+            download=True,
+            transform=transforms.ToTensor(),
+        )
+    elif args.dataset == "CelebA":
+        train_dataset = torchvision.datasets.CelebA(
+            args.dataset_dir,
+            download=True,
+            transform=transforms.ToTensor(),
+        )
+        test_dataset = torchvision.datasets.CelebA(
+            args.dataset_dir,
+            train=False,
+            download=True,
             transform=transforms.ToTensor(),
         )
     else:

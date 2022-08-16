@@ -3,7 +3,7 @@ nodes: 1
 gpus: 1 # I recommend always assigning 1 GPU to 1 node
 nr: 0 # machine nr. in node (0 -- nodes - 1)
 dataparallel: 0 # Use DataParallel instead of DistributedDataParallel
-workers: 16
+workers: 8
 dataset_dir: "./datasets"
 
 # train options
@@ -31,4 +31,4 @@ reload: False
 
 # logistic regression options
 logistic_batch_size: 256
-logistic_epochs: 500
+logistic_epochs: 200
